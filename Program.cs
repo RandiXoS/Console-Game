@@ -8,7 +8,7 @@ namespace Simple_Console_Game
     {
         static void Main()
         {
-            ConfigConsole();
+            //ConfigConsole();
             SelectOption leer = MainMenu.Menu();
 
             switch (leer)
@@ -23,7 +23,7 @@ namespace Simple_Console_Game
                     break;
             }
             Console.Clear();
-            Main();
+            //Main();
             //Console.ReadLine();
         }
 
