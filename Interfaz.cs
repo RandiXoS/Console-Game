@@ -8,7 +8,7 @@ namespace Simple_Console_Game
     public class Interfaz
     {
         //Dibuja un Cuadrado en Pantalla
-        public static void Cuadrado(int psx = 2, int psy = 2, int width = 120, int height = 41)
+        public static void Cuadrado(int psx = 2, int psy = 2, int width = 120, int height = 40)
         {
             int max = 1;
             height -= 4;

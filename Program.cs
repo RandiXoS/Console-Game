@@ -8,7 +8,9 @@ namespace Simple_Console_Game
     {
         static void Main()
         {
-            //ConfigConsole();
+            Console.CursorVisible = false;
+            MainMenu.BarraCarga();
+
             SelectOption leer = MainMenu.Menu();
 
             switch (leer)
@@ -23,16 +25,7 @@ namespace Simple_Console_Game
                     break;
             }
             Console.Clear();
-            //Main();
-            //Console.ReadLine();
         }
 
-        //Configura el Tamaño de la Consola
-        static void ConfigConsole()
-        {
-            Console.WindowWidth = 120;
-            Console.WindowHeight = 41;
-            Console.CursorVisible = false;
-        }
     }
 }

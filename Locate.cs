@@ -25,7 +25,7 @@ namespace Simple_Console_Game
         }
         
         //Imprime un Array en la posición de pantalla que establezcas
-        public static void Print_Position(int psx, int psy, string[] caracter)
+        public static void Print(int psx, int psy, string[] caracter)
         {
                 for (int i = 0; i < caracter.Length; i++)
                 {
