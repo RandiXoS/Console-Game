@@ -9,6 +9,8 @@ namespace Simple_Console_Game
         static void Main()
         {
             ConfigConsole();
+            MainMenu.BarraCarga();
+
             SelectOption leer = MainMenu.Menu();
 
             switch (leer)

@@ -167,17 +167,23 @@ namespace Simple_Console_Game
             Console.Clear();//Limpiando la consola
 
             tiempo_s *= 1000;//Conviertiendo segundos a milisegundos
-            int cantidad = tiempo_s/5;
-            int x,y;
+            int cantidad = tiempo_s/100;
+            int x = 50;
 
             if (cuadro)
             {
                 Interfaz.Cuadrado();
             }
-            
-            for(int i = 0; i < 5; i++)
+            Console.SetCursorPosition(50,24);
+            for(int i = 0; i < 100; i++)
             {
-                
+                Locate.Print_Center("Loading "+i+" %.");
+                if (i % 5 == 0)
+                {
+                    Locate.Print(x++,20,"█");
+                }
+
+                Thread.Sleep(cantidad);
             }
 
 
