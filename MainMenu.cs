@@ -30,7 +30,7 @@ namespace Simple_Console_Game
             cond = true;
             y = 24;
 
-            Interfaz.Cuadrado(4, 3, 116, 39);
+            Interfaz.Cuadrado(4, 3, 116, 38);
             Interfaz.Cuadrado();
 
 
