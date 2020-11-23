@@ -69,5 +69,30 @@ namespace Simple_Console_Game
             }
         }
         
+        //Muestra una Barra de Carga en pantalla
+        public static void BarraCarga(int tiempo_s = 2, bool cuadro = false)
+        {
+            Console.Clear();//Limpiando la consola
+
+            tiempo_s *= 1000;//Conviertiendo segundos a milisegundos
+            int cantidad = tiempo_s/100;
+            int x = 50;
+
+            if (cuadro)
+            {
+                Interfaz.Cuadrado();
+            }
+            Console.SetCursorPosition(50,24);
+            for(int i = 0; i < 100; i++)
+            {
+                Locate.Print_Center("Loading "+i+" %.",18);
+                if (i % 5 == 0)
+                {
+                    Locate.Print(x++,20,"█");
+                }
+
+                Thread.Sleep(cantidad);
+            }
+        }
     }
 }

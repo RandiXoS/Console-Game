@@ -16,10 +16,10 @@ namespace Simple_Console_Game
    
     public class MainMenu
     {
-        
-        private static bool cond = true;
         static int y = 20;
-        static ConsoleKeyInfo keyInfo;//Lectura de Teclas
+        static ConsoleKeyInfo keyinfo;//Lectura de Teclas
+
+        //Creando Objeto de un tipo enumerado
         static SelectOption option = SelectOption.Jugar;
 
         //Menú mostrado al usuario el cual, retorna un objeto del tipo
@@ -27,7 +27,6 @@ namespace Simple_Console_Game
         public static SelectOption Menu()
         {
             Console.Clear();
-            cond = true;
             y = 24;
 
             Interfaz.Cuadrado(4, 3, 116, 38);
@@ -51,11 +50,11 @@ namespace Simple_Console_Game
             Interfaz.Cuadrado(49, 10, 28, 12);
             Relleno();
 
-            while (cond)
+            while (true)
             {
-                keyInfo = Console.ReadKey();
+                keyinfo = Console.ReadKey();
 
-                if (keyInfo.Key == ConsoleKey.DownArrow)
+                if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
                     option++;
                     option = ((int)option > 3) ? SelectOption.Salir : option;
@@ -71,7 +70,7 @@ namespace Simple_Console_Game
                     Console.Write("-->");
                     Console.SetCursorPosition(51, y);
                 }
-                else if (keyInfo.Key == ConsoleKey.UpArrow)
+                else if (keyinfo.Key == ConsoleKey.UpArrow)
                 {
                     option--;
                     option = ((int)option < 1) ? SelectOption.Jugar : option;
@@ -88,25 +87,9 @@ namespace Simple_Console_Game
                     Console.Write("-->");
                     Console.SetCursorPosition(51, y);
                 }
-                else if (keyInfo.Key == ConsoleKey.Enter)
+                else if (keyinfo.Key == ConsoleKey.Enter)
                 {
-                    switch (option)
-                    {
-                        case SelectOption.Jugar:
-
-                            cond = false;
-                            break;
-
-                        case SelectOption.Ayuda:
-
-                            cond = false;
-                            break;
-
-                        case SelectOption.Salir:
-
-                            cond = false;
-                            break;
-                    }
+                    return option;
                 }
                 else
                 {
@@ -117,12 +100,7 @@ namespace Simple_Console_Game
                     Console.Write("-->");
                     Console.SetCursorPosition(51, y);
                 }
-
-                //Console.SetCursorPosition(60, 12);
-                //Console.Write((int)option);
             }
-
-            return option;
         }
 
         //Rellena un espacio en la pantalla
@@ -160,33 +138,6 @@ namespace Simple_Console_Game
 
             Console.SetCursorPosition(0, 0);//Reseteando cursor
         }
-    
-        //Muestra una Barra de Carga en pantalla
-        public static void BarraCarga(int tiempo_s = 2, bool cuadro = false)
-        {
-            Console.Clear();//Limpiando la consola
 
-            tiempo_s *= 1000;//Conviertiendo segundos a milisegundos
-            int cantidad = tiempo_s/100;
-            int x = 50;
-
-            if (cuadro)
-            {
-                Interfaz.Cuadrado();
-            }
-            Console.SetCursorPosition(50,24);
-            for(int i = 0; i < 100; i++)
-            {
-                Locate.Print_Center("Loading "+i+" %.");
-                if (i % 5 == 0)
-                {
-                    Locate.Print(x++,20,"█");
-                }
-
-                Thread.Sleep(cantidad);
-            }
-
-
-        }
     }
 }

@@ -8,8 +8,9 @@ namespace Simple_Console_Game
     {
         static void Main()
         {
+            //Console.SetWindowSize(120,41);
             Console.CursorVisible = false;
-            MainMenu.BarraCarga();
+            Interfaz.BarraCarga();
 
             SelectOption leer = MainMenu.Menu();
 
@@ -24,7 +25,9 @@ namespace Simple_Console_Game
                 default:
                     break;
             }
-            Console.Clear();
+            
+
+            Console.ReadKey();
         }
 
     }
