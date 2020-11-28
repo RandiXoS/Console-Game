@@ -33,8 +33,8 @@ namespace Simple_Console_Game
                 } 
         }
         
-        //Centraliza un cadena en pantalla
-        public static void Print_Center(string caracter, int row = -1)
+        //Centraliza una cadena en pantalla
+        public static void PrintCenter(string caracter, int row = -1)
         {
             row =(row < 0)? Console.WindowHeight/2 : row;
             int column = (Console.WindowWidth / 2) - (caracter.Length / 2); 
@@ -43,8 +43,21 @@ namespace Simple_Console_Game
             Console.Write(caracter);
         }
         
+        //Centraliza una cadena en pantalla con la opción de darle color
+        public static void PrintCenter(string caracter, ConsoleColor foreground, ConsoleColor background = ConsoleColor.Black, int row = -1)
+        {
+            row =(row < 0)? Console.WindowHeight/2 : row;
+            int column = (Console.WindowWidth / 2) - (caracter.Length / 2); 
+
+            for (int i = 0; i < caracter.Length; i++)
+            {
+                Console.MoveBufferArea(column++, row, 1, 1, Console.WindowWidth, Console.WindowHeight, caracter[i], foreground, ConsoleColor.Black);
+            }
+
+        }
+        
         //Centraliza un Array en pantalla
-        public static void Print_Center(string[] caracter, int row = -1)
+        public static void PrintCenter(string[] caracter, int row = -1)
         {
             row =(row < 0)? Console.WindowHeight/2 : row;
             int column = (Console.WindowWidth / 2) - (caracter.Length / 2);
@@ -53,6 +66,21 @@ namespace Simple_Console_Game
             {
                 Console.SetCursorPosition(column, row++);
                 Console.Write(caracter[i]);
+            }
+        }
+        
+        //Imprime un caracter a color en la posición dada
+        public static void PrintTextColor(int x, int y, char source, ConsoleColor foreground, ConsoleColor background = ConsoleColor.Black)
+        {
+            Console.MoveBufferArea(x, y, 1, 1, Console.WindowWidth, Console.WindowHeight, source, foreground, background);
+        }
+        
+        //Imprime una cadena de caracteres a color en la posición dada
+        public static void PrintTextColor(int x, int y, string source,          ConsoleColor foreground = ConsoleColor.Black, ConsoleColor background = ConsoleColor.Black)
+        {
+            for (int i = 0; i < source.Length; i++)
+            {
+                Console.MoveBufferArea(x++, y, 1, 1, Console.WindowWidth, Console.WindowHeight, source[i], foreground, ConsoleColor.Black);
             }
         }
     }

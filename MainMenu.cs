@@ -10,7 +10,8 @@ namespace Simple_Console_Game
     public enum SelectOption
     {
         Jugar = 1,
-        Ayuda,
+        Personalizar,
+        Ayuda ,
         Salir
     }
    
@@ -27,41 +28,41 @@ namespace Simple_Console_Game
         public static SelectOption Menu()
         {
             Console.Clear();
-            y = 24;
+            y = 20;
 
-            Interfaz.Cuadrado(4, 3, 116, 38);
-            Interfaz.Cuadrado();
+            Interfaz.Cuadrado(4, 3, 116, 38, ConsoleColor.DarkCyan);
+            Interfaz.Cuadrado(2, 2, 120, 40, ConsoleColor.DarkCyan);
 
+            Locate.PrintCenter(" THE  ADVENTURE  OF  THE", ConsoleColor.Green, row: 6);
+            Locate.PrintCenter("LITTLE SQUARE", ConsoleColor.Green, row: 8);
 
-            Locate.Print_Center(" THE  ADVENTURE  OF  THE", 6);
-            Locate.Print_Center("LITTLE SQUARE", 8);
+            Locate.PrintTextColor(55,20,"1.",ConsoleColor.Red);
+            Locate.PrintTextColor(55,22,"2.",ConsoleColor.Red);
+            Locate.PrintTextColor(55,24,"3.",ConsoleColor.Red);
+            Locate.PrintTextColor(55,26,"4.",ConsoleColor.Red);
 
-            Console.SetCursorPosition(55, 20);
-            Console.Write("1. Jugar.");
-            Console.SetCursorPosition(55, 22);
-            Console.Write("2. Como se Juega ?");
-            Console.SetCursorPosition(55, 24);
-            Console.Write("3. Salir.");
+            Locate.PrintTextColor(57, 20, " Jugar", ConsoleColor.Blue);
+            Locate.PrintTextColor(57, 22, " Personalizar", ConsoleColor.Blue);
+            Locate.PrintTextColor(57, 24, " Ayuda", ConsoleColor.Blue);
+            Locate.PrintTextColor(57, 26, " Salir", ConsoleColor.Blue);
 
-            Console.SetCursorPosition(52, 20);
-            Console.Write("-->");
-            Console.SetCursorPosition(52, 20);
+            Locate.Print(52,20,"-->");
 
-            Interfaz.Cuadrado(49, 10, 28, 12);
+            Interfaz.Cuadrado(49, 10, 28, 12, ConsoleColor.DarkCyan);
             Relleno();
 
             while (true)
             {
-                keyinfo = Console.ReadKey();
+                keyinfo = Console.ReadKey(true);
 
                 if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
                     option++;
-                    option = ((int)option > 3) ? SelectOption.Salir : option;
+                    option = ((int)option > 4) ? SelectOption.Salir : option;
                     Console.SetCursorPosition(52, y);
                     Console.Write("   ");
                     y += 2;
-                    if (y > 24)
+                    if (y > 26)
                     {
                         y = 20;
                         option = SelectOption.Jugar;
@@ -79,7 +80,7 @@ namespace Simple_Console_Game
                     y -= 2;
                     if (y < 20)
                     {
-                        y = 24;
+                        y = 26;
                         option = SelectOption.Salir;
                     }
 
@@ -133,10 +134,8 @@ namespace Simple_Console_Game
                 }
             }
 
-            Locate.Print(num.Next(51, 72), num.Next(11,17),"ó");
-            Locate.Print(num.Next(51, 72), num.Next(11,17),"■");
-
-            Console.SetCursorPosition(0, 0);//Reseteando cursor
+            Locate.PrintTextColor(num.Next(51, 72), num.Next(11,17),"ó",ConsoleColor.Green);
+            Locate.PrintTextColor(num.Next(51, 72), num.Next(11,17),"■",ConsoleColor.Cyan);
         }
 
     }

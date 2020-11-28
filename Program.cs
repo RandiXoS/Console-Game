@@ -8,7 +8,7 @@ namespace Simple_Console_Game
     {
         static void Main()
         {
-            //Console.SetWindowSize(120,41);
+            Console.SetWindowSize(120,41);
             Console.CursorVisible = false;
             Interfaz.BarraCarga();
 
@@ -17,16 +17,23 @@ namespace Simple_Console_Game
             switch (leer)
             {
                 case SelectOption.Jugar: 
+                    Console.WriteLine(leer);
                     break;
+
+                case SelectOption.Personalizar:
+                    Console.WriteLine(leer);
+                    break;
+
                 case SelectOption.Ayuda:
+                    Console.WriteLine(leer);
                     break;
+
                 case SelectOption.Salir:
-                    break;
-                default:
-                    break;
+                    
+                    return;
+                   
             }
             
-
             Console.ReadKey();
         }
 
